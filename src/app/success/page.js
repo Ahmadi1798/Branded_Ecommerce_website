@@ -1,15 +1,20 @@
 'use client';
 import Link from 'next/link';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BsBagCheckFill } from 'react-icons/bs';
-import Confetti from 'react-confetti';
+import dynamic from 'next/dynamic';
 
 import { useStateContext } from '../../../context/StateContext';
 
+const Confetti = dynamic(() => import('react-confetti'), { ssr: false });
+
 const Success = () => {
   const { setCartItems, setTotalPrice, setTotalQuantities } = useStateContext();
+  const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
 
   useEffect(() => {
+    // ... existing code ...
+    setDimensions({ width: window.innerWidth, height: window.innerHeight });
     localStorage.clear();
     setCartItems([]);
     setTotalPrice(0);
@@ -18,7 +23,9 @@ const Success = () => {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <Confetti width={window.innerWidth} height={window.innerHeight} />
+      {dimensions.width > 0 && (
+        <Confetti width={dimensions.width} height={dimensions.height} />
+      )}
       <div className="p-10 bg-white rounded-lg shadow-xl text-center max-w-md w-full">
         <p className="flex justify-center text-green-500 text-7xl mb-4">
           <BsBagCheckFill />
