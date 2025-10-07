@@ -43,7 +43,7 @@ const Cart = () => {
 
   return (
     <div
-      className="fixed inset-0 transparent bg-opacity-50 z-50"
+      className="fixed inset-0 bg-black/80 bg-opacity-50 z-50"
       onClick={() => setShowCart(false)}
     >
       <div
