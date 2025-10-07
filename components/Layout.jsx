@@ -4,27 +4,23 @@ import Footer from './Footer';
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen flex flex-col bg-gray-50">
+    <div className="min-h-screen flex flex-col bg-white">
       <Head>
-        <title>Branded Store</title>
+        <title>Aura - Premium Ecommerce</title>
         <meta
           name="description"
-          content="Your premium e-commerce destination"
+          content="Your destination for premium, stylish products."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="sticky top-0 z-50 bg-white shadow-md">
+      <header className="sticky top-0 z-50 bg-white shadow-sm">
         <Navbar />
       </header>
 
-      <main className="flex-grow container mx-auto px-4 py-6 md:px-6 md:py-8">
-        {children}
-      </main>
+      <main className="flex-grow">{children}</main>
 
-      <footer className="bg-gray-900 text-white mt-auto">
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 };

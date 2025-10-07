@@ -76,20 +76,26 @@ const page = async () => {
   }));
 
   return (
-    <>
+    <main className="container mx-auto px-6 py-8">
       <HeroBanner herobanner={banner.length && banner[0]} />
 
-      <div className="w-full mt-20 flex flex-col items-center">
-        <h2 className="text-4xl font-bold">Best Selling Products</h2>
-        <p className="font-[200px] text-xl">Speakers of many variations</p>
+      <div className="text-center my-16">
+        <h2 className="font-poppins text-4xl font-bold text-gray-800 mb-2">
+          Our Best Sellers
+        </h2>
+        <p className="font-roboto text-lg text-gray-600">
+          Discover our most popular products
+        </p>
       </div>
-      <div className="flex flex-wrap justify-center space-x-10 mt-10">
-        {products.map((product) => (
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-16">
+        {products?.map((product) => (
           <Product key={product._id} product={product} />
         ))}
       </div>
+
       <FooterBanner footerBanner={banner.length && banner[0]} />
-    </>
+    </main>
   );
 };
 
